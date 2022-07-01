@@ -9,4 +9,3 @@ def max_integer(my_list=[]):
             if x > maximum:
                 maximum = x
         return maximum
-
