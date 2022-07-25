@@ -3,13 +3,22 @@
 
 
 class Rectangle:
-    """Represent an empty rectangle."""
+    """Represent an empty rectangle.
+    Attributes:
+        number_of_instances = The number of Rectangle Instances.
+        print_symbol: The symbol used ofr string representation
+    """
+
+    number_of_instances = 0
+    print_symbol = "#"
+
     def __init__(self, width=0, height=0):
         """Initialize a new rectangle.
         Args:
             width(int): The width of the rectangle
             height(int): The height of the rectangle
         """
+        type(self).number_of_instances += 1
         self.height = height
         self.width = width
 
@@ -60,9 +69,9 @@ class Rectangle:
             return ("")
 
         rect = []
-        for x in range(self.__height):
-            [rect.append('#') for y in range(self.__width)]
-            if x != self.__height - 1:
+        for i in range(self.__height):
+            [rect.append(str(self.print_symbol)) for j in range(self.__width)]
+            if i != self.__height - 1:
                 rect.append("\n")
         return ("".join(rect))
 
@@ -74,4 +83,5 @@ class Rectangle:
 
     def __del__(self):
         """Print a message when an instance of Rectangle is being deleted"""
+        type(self).number_of_instances -= 1
         print("Bye rectangle...")
